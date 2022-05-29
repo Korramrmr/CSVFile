@@ -16,11 +16,11 @@ class CSVTest {
     public void hashMapShouldContainsCorrectKey() {
         HashMap<String, Integer> counterWords = new HashMap<>();
         CSV csv = new CSV();
-        Integer expectedCounter = 1;
+        Integer expectedCount = 1;
         String stringToCount = "Tiefling";
 
         csv.addToMap(counterWords, stringToCount);
-        assertEquals(expectedCounter, counterWords.get("Tiefling"));
+        assertEquals(expectedCount, counterWords.get("Tiefling"));
     }
 
     @Test
@@ -29,12 +29,12 @@ class CSVTest {
         HashMap<String, Integer> testMap = new HashMap<>();
         CSV csv = new CSV();
         int initialCount = 1;
-        int expected = 2;
+        int expectedCount = 2;
         String stringToCount = "Tiefling";
         testMap.put(stringToCount, initialCount);
 
         csv.addToMap(testMap, "Tiefling");
-        assertEquals(expected, testMap.get("Tiefling"));
+        assertEquals(expectedCount, testMap.get("Tiefling"));
     }
 
     @Test

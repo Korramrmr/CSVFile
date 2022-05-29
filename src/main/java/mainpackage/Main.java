@@ -7,7 +7,6 @@ public final class Main {
     }
 
     public static void main(String[] args) {
-
         if (args.length == 0) {
             System.out.println("Вы не указали название файлов.");
         } else if (args.length == 1) {
@@ -18,7 +17,6 @@ public final class Main {
         } else {
             System.out.println("Вы указали больше двух файлов.");
         }
-
     }
 
 }
