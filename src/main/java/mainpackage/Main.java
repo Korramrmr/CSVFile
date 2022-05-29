@@ -1,6 +1,11 @@
 package mainpackage;
 
-public class Main {
+import csvpackage.CSV;
+
+public final class Main {
+    private Main() {
+    }
+
     public static void main(String[] args) {
 
         if (args.length == 0) {
