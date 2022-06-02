@@ -1,10 +1,10 @@
-package csvpackage;
+package csv;
 
 import java.io.*;
 import java.util.*;
 
 
-public class CSV {
+public final class CSV {
     private final HashMap<String, Integer> counterWords = new HashMap<>();
     private int countWords = 0;
     private List<Map.Entry<String, Integer>> listWords;
@@ -20,8 +20,8 @@ public class CSV {
             readFileWords(inFileName);
         }
         if (outFileName != null) {
-            File file = new File(outFileName);
-            try (PrintWriter writer = new PrintWriter(file.getAbsoluteFile())) {
+            final File file = new File(outFileName);
+            try (final PrintWriter writer = new PrintWriter(file.getAbsoluteFile())) {
                 writeCSV(listWords, countWords, writer);
                 System.out.println("Файл записан успешно.");
             } catch (final FileNotFoundException e) {
@@ -31,15 +31,15 @@ public class CSV {
     }
 
     void readFileWords(final String inFileName) {
-        try (Reader reader = new InputStreamReader(new BufferedInputStream(new FileInputStream(inFileName)))) {
+        try (final Reader reader = new InputStreamReader(new BufferedInputStream(new FileInputStream(inFileName)))) {
             StringBuilder builder = new StringBuilder();
             int currentSymbol;
             while ((currentSymbol = reader.read()) != -1) {
-                char charSymbol = (char) currentSymbol;
+                final char charSymbol = (char) currentSymbol;
                 if (Character.isLetterOrDigit(charSymbol)) {
                     builder.append(charSymbol);
                 } else if (builder.length() > 0) {
-                    String word = builder.toString();
+                    final String word = builder.toString();
                     addToMap(counterWords, word);
                     countWords++;
                     builder = new StringBuilder();
@@ -53,7 +53,7 @@ public class CSV {
         listWords = sortMap(counterWords);
     }
 
-    void addToMap(HashMap<String, Integer> counterWords, String word) {
+    void addToMap(final HashMap<String, Integer> counterWords, final String word) {
         int counter = 1;
         Integer currentCount = counterWords.get(word);
         if (currentCount != null) {
@@ -62,10 +62,10 @@ public class CSV {
         counterWords.put(word, counter);
     }
 
-    List<Map.Entry<String, Integer>> sortMap(HashMap<String, Integer> map) {
-        List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
+    List<Map.Entry<String, Integer>> sortMap(final HashMap<String, Integer> map) {
+        final List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
         list.sort((o1, o2) -> {
-            int comparableValue = o2.getValue().compareTo(o1.getValue());
+            final int comparableValue = o2.getValue().compareTo(o1.getValue());
             if (comparableValue != 0) {
                 return comparableValue;
             }
@@ -74,7 +74,7 @@ public class CSV {
         return list;
     }
 
-    void writeCSV(List<Map.Entry<String, Integer>> list, int countWords, PrintWriter writer) {
+    void writeCSV(final List<Map.Entry<String, Integer>> list, final int countWords, final PrintWriter writer) {
         writer.printf("%-15s%-15s%s%n", "Слово", "Частота,", "Частота (в %)");
         for (Map.Entry<String, Integer> wordsList : list) {
             writer.printf("%-15s%-15s%.3f%n", wordsList.getKey() + ",", wordsList.getValue() + ",", (100.0f * wordsList.getValue() / countWords));

@@ -31,7 +31,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>mainpackage.Main</mainClass>
+                            <mainClass>main.Main</mainClass>
                             <addClasspath>true</addClasspath>
                         </manifest>
                     </archive>
