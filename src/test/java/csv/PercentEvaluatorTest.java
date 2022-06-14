@@ -17,5 +17,4 @@ class PercentEvaluatorTest {
         PercentEvaluator percentEvaluator = new PercentEvaluator(0);
         assertEquals(Double.NaN, percentEvaluator.getPercent(0));
     }
-
 }
