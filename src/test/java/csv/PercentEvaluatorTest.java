@@ -13,7 +13,7 @@ class PercentEvaluatorTest {
     }
 
     @Test
-    public void sTest() {
+    public void shouldReturnNan() {
         PercentEvaluator percentEvaluator = new PercentEvaluator(0);
         assertEquals(Double.NaN, percentEvaluator.getPercent(0));
     }
