@@ -7,9 +7,9 @@ public final class Main {
     public static final int INPUT_FILE_CLI_ARGUMENT_INDEX = 0;
     public static final int OUTPUT_FILE_CLI_ARGUMENT_INDEX = 1;
 
-    private static final int NULL_CLI_ARGUMENTS = 0;
-    private static final int IN_INPUT_ARGUMENT_COUNT = 1;
-    private static final int IN_INPUT_ADN_OUTPUT_ARGUMENTS_COUNT = 2;
+    public static final int NULL_CLI_ARGUMENTS = 0;
+    public static final int IN_INPUT_ARGUMENT_COUNT = 1;
+    public static final int IN_INPUT_ADN_OUTPUT_ARGUMENTS_COUNT = 2;
 
     private Main() {
     }
