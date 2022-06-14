@@ -64,20 +64,21 @@ public final class CSV {
 
     List<Map.Entry<String, Integer>> sortMap(final HashMap<String, Integer> map) {
         final List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
-        list.sort((o1, o2) -> {
-            final int comparableValue = o2.getValue().compareTo(o1.getValue());
+        list.sort((left, right) -> {
+            final int comparableValue = right.getValue().compareTo(left.getValue());
             if (comparableValue != 0) {
                 return comparableValue;
             }
-            return o1.getKey().compareTo(o2.getKey());
+            return left.getKey().compareTo(right.getKey());
         });
         return list;
     }
 
     void writeCSV(final List<Map.Entry<String, Integer>> list, final int countWords, final PrintWriter writer) {
         writer.printf("%-15s%-15s%s%n", "Слово", "Частота,", "Частота (в %)");
+        PercentEvaluator percentEvaluator = new PercentEvaluator(countWords);
         for (Map.Entry<String, Integer> wordsList : list) {
-            writer.printf("%-15s%-15s%.3f%n", wordsList.getKey() + ",", wordsList.getValue() + ",", (100.0f * wordsList.getValue() / countWords));
+            writer.printf("%-15s%-15s%.3f%n", wordsList.getKey() + ",", wordsList.getValue() + ",", percentEvaluator.getPercent(wordsList.getValue()));
         }
     }
 }
